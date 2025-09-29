@@ -31,7 +31,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ag.shoping.network.model.AllProductsResponse
 import com.ag.shoping.repository.ExampleRepository
-import com.ag.shoping.ui.theme.ShoingCartTheme
+import com.ag.shoping.ui.theme.ShoppingCartTheme
 
 class MainActivity : ComponentActivity() {
 
@@ -43,7 +43,7 @@ class MainActivity : ComponentActivity() {
 
         enableEdgeToEdge()
         setContent {
-            ShoingCartTheme {
+            ShoppingCartTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
 
 
@@ -75,24 +75,32 @@ fun Greeting(data: AllProductsResponse?, modifier: Modifier = Modifier) {
         content = {
             val list = data?.products ?: emptyList()
             items(list) {
-                Column(Modifier.padding(start=10.dp, bottom = 5.dp)) {
+                Column(Modifier.padding(start = 10.dp, bottom = 5.dp)) {
                     Text(
-                        modifier = Modifier.padding(start = 5.dp, top= 2.dp), text = it.title, style = TextStyle(
-                            fontSize = 22.sp,
+                        modifier = Modifier.padding(top = 2.dp),
+                        text = it.title,
+                        style = TextStyle(
+                            fontSize = 24.sp,
                             fontWeight = Bold
                         )
                     )
-                    Text(text = it.description)
                     Text(
-                        text = "Rs ${it.price}", Modifier.padding(start = 5.dp), style = TextStyle(
-                            fontSize = 18.sp,
+                        modifier = Modifier.padding(top = 4.dp, bottom = 4.dp),
+                        text = it.description
+                    )
+                    Text(
+                        text = "Rs ${it.price}", Modifier.padding(top = 4.dp), style = TextStyle(
+                            fontSize = 20.sp,
                             fontWeight = Bold
                         )
                     )
                 }
-                HorizontalDivider(Modifier.fillMaxWidth()
-                    .height(2.dp)
-                    .background(Color.Black))
+                HorizontalDivider(
+                    Modifier
+                        .fillMaxWidth()
+                        .height(2.dp)
+                        .background(Color.Black)
+                )
             }
         },
     )
@@ -101,7 +109,7 @@ fun Greeting(data: AllProductsResponse?, modifier: Modifier = Modifier) {
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
-    ShoingCartTheme {
+    ShoppingCartTheme {
         //  Greeting("Android")
     }
 }
